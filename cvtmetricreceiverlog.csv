@@ -1,0 +1,199 @@
+﻿"2025-04-11T15:28:42.039Z	INFO	app/geneva-hotpath-metric-processor.go:29	Metric Receiver will accept metric NIC.RX_CRC_ERRORS
+2025-04-11T15:28:42.040Z	INFO	app/geneva-hotpath-metric-processor.go:29	Metric Receiver will accept metric NIC.TX_HW_ERRORS
+2025-04-11T15:28:42.040Z	INFO	app/geneva-hotpath-metric-processor.go:29	Metric Receiver will accept metric LIF.LIF_RECEIVED_ERRORS
+2025-04-11T15:28:42.040Z	INFO	app/geneva-hotpath-metric-processor.go:29	Metric Receiver will accept metric LIF.LIF_SENT_ERRORS
+2025-04-11T15:28:42.040Z	INFO	app/geneva-hotpath-metric-processor.go:29	Metric Receiver will accept metric NIC.TX_ERRORS
+2025-04-11T15:28:42.041Z	INFO	app/geneva-hotpath-metric-processor.go:29	Metric Receiver will accept metric NIC.RX_ERRORS
+2025-04-11T15:28:42.041Z	ERROR	rabbitmq/connection.go:246	Error opening RabbitMQ channel: Exception (504) Reason: ""channel/connection is not open""
+2025-04-11T07:30:53.388Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:30:53.388Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.performance.cbs.cbs_volume_optimized_backup_bytes""}
+2025-04-11T07:30:53.388Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:30:53.427Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:30:53.428Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:30:53.428Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:31:12.880Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:31:12.881Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:31:12.881Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:25:12.770Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:25:12.770Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:25:12.770Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:25:51.922Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:25:51.922Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:25:51.922Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:25:51.929Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:25:51.929Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:25:51.929Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:26:53.315Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:26:53.315Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:26:53.316Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:26:53.318Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+2025-04-11T07:26:53.318Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:26:53.318Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:27:12.823Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:27:12.823Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.anf_subscription_number_of_pvt_endpoints""}
+2025-04-11T07:27:12.823Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:27:51.970Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:27:51.970Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.anf_subscription_number_of_pvt_endpoints""}
+2025-04-11T07:27:51.970Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:27:52.059Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:27:52.059Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:27:52.059Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:28:53.350Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:28:53.350Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.performance.cbs.cbs_volume_logical_backup_bytes""}
+2025-04-11T07:28:53.350Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:28:53.357Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:28:53.357Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.performance.cbs.cbs_volume_optimized_backup_bytes""}
+2025-04-11T07:28:53.357Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:29:12.851Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:29:12.851Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.performance.cbs.cbs_volume_optimized_backup_bytes""}
+2025-04-11T07:29:12.851Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:29:51.996Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:29:51.996Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.performance.cbs.cbs_volume_logical_backup_bytes""}
+2025-04-11T07:29:51.996Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:29:52.090Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:29:52.090Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.performance.cbs.cbs_volume_logical_backup_bytes""}
+2025-04-11T07:29:52.090Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:20:53.192Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:20:53.192Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:20:53.192Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:20:53.193Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+2025-04-11T07:20:53.193Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:20:53.193Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: dial tcp 10.37.250.8:5432: i/o timeout	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:21:12.703Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:21:12.703Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:21:12.703Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:21:51.835Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:21:51.835Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.anf_subscription_number_of_pvt_endpoints""}
+2025-04-11T07:21:51.835Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:21:51.843Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+2025-04-11T07:21:51.843Z	ERROR	app/processor.go:192	error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver"", ""correlation_id"": """", ""routing_key"": ""metric.hydrated.usage.volume.cbs_volume_backup_size""}
+2025-04-11T07:21:51.843Z	ERROR	app/processor.go:163	Error sending metrics: error sending metrics to *app.persistedMetricSink: failed persisting metrics: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded	{""metric_receiver"": ""PersistedMetricReceiver""}
+2025-04-11T07:22:53.227Z	ERROR	psql/metricsavior.go:245	Error starting transaction: failed to connect to `user=cvt_collector database=cloud_volumes_telemetry`:
+	10.37.250.8:5432 (centraluseuap-metrics.postgres.database.azure.com): dial error: timeout: context deadline exceeded
+	10.37.250.8:5432 (centraluseuap-met"
