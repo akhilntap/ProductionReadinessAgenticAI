@@ -2,7 +2,7 @@ import streamlit as st
 from langragphworkflow import analyze_observability
 
 # Streamlit app
-st.title("Observability Chatbot")
+st.title("PRR Chatbot")
 
 # Sidebar for model selection
 st.sidebar.header("Model Selection")
@@ -12,16 +12,52 @@ model = st.sidebar.selectbox(
 )
 
 # Chat interface
-st.header("Chat with Observability Bot")
+st.header("Make sure you're connected to vpn")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display chat history
+# Display chat history with visual differentiation
 for message in st.session_state.messages:
     if message["role"] == "user":
-        st.markdown(f"**You:** {message['content']}")
+        st.markdown(
+            f'''
+            <div style="
+                display: flex; 
+                justify-content: flex-end; 
+                margin-bottom: 10px;">
+                <div style="
+                    background-color: #d1e7dd; 
+                    color: #0f5132; 
+                    padding: 10px; 
+                    border-radius: 15px 15px 0 15px; 
+                    max-width: 70%; 
+                    word-wrap: break-word;">
+                    <strong>You:</strong> {message["content"]}
+                </div>
+            </div>
+            ''',
+            unsafe_allow_html=True,
+        )
     else:
-        st.markdown(f"**Bot:** {message['content']}")
+        st.markdown(
+            f'''
+            <div style="
+                display: flex; 
+                justify-content: flex-start; 
+                margin-bottom: 10px;">
+                <div style="
+                    background-color: #f8d7da; 
+                    color: #842029; 
+                    padding: 10px; 
+                    border-radius: 15px 15px 15px 0; 
+                    max-width: 70%; 
+                    word-wrap: break-word;">
+                    <strong>Bot:</strong> {message["content"]}
+                </div>
+            </div>
+            ''',
+            unsafe_allow_html=True,
+        )
 
 # User input
 def handle_input():
