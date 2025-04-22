@@ -10,6 +10,7 @@ from typing import Optional, TypedDict, Annotated
 import operator
 from semantic_router.utils.function_call import FunctionSchema
 import csv
+from bandit.core import manager, config
 
 
 def read_python_file(file_path):
@@ -26,6 +27,39 @@ def read_csv_file(file_path):
             return [row for row in reader]
     except FileNotFoundError:
         return "Error: File not found."
+
+def check_code_security(file_path):
+    """
+    Check a Python file for security vulnerabilities using Bandit.
+
+    :param file_path: Path to the Python file to analyze
+    :return: Bandit report as a string
+    """
+    # Load Bandit configuration
+    bandit_config = config.BanditConfig()
+
+    # Initialize Bandit manager
+    bandit_manager = manager.BanditManager(bandit_config, "file", False)
+
+    # Run Bandit on the specified file
+    bandit_manager.discover_files([file_path])
+    bandit_manager.run_tests()
+
+    # Generate and return the report
+    issues = bandit_manager.get_issue_list()
+    if not issues:
+        return "No high-level vulnerabilities found. Checking for lower-level issues..."
+
+    # If no high-level issues, check for lower-level issues
+    lower_level_issues = []
+    for issue in issues:
+        if issue.severity.lower() in ['low', 'medium']:
+            lower_level_issues.append(str(issue))
+
+    if lower_level_issues:
+        return "\n".join(lower_level_issues)
+    else:
+        return "No vulnerabilities found, including lower-level issues."
     
 class codepath(BaseModel):
     path: str = Field(description="code path to execute")
@@ -43,7 +77,12 @@ def execute_query(path: str) -> str:
 def read_csv(path: str) -> list:
     """Returns the content of a CSV file as a list of rows"""
     return read_csv_file(path)
+@tool(args_schema=codepath)
+def check_code(path: str) -> str:
+    """Returns the result of code path execution"""
+    return check_code_security(path)
 
+# Define the agent state
 class AgentState(TypedDict):
    messages: Annotated[list[AnyMessage], operator.add]
 
@@ -142,7 +181,7 @@ def analyze_observability(model: str, human_message: str):
   Returns:
     dict: The result of the analysis.
   """
-  if "code" in human_message.lower():
+  if "observability" in human_message.lower():
     prompt = '''You are a senior expert in reviewing code for observability. The best one that exists.
     Your goal is to analyze the code on the following questions 
     1. Are there actionable alerts identified for the feature? Are there Runbooks for the actionable alerts? Do we have TSGs attached to the alert?
@@ -163,10 +202,23 @@ def analyze_observability(model: str, human_message: str):
     Provide response in the format as follows: {question: response}
     '''
     tools = [read_csv]
+  elif "security vulnerabilities" in human_message.lower():
+    prompt = '''You are a senior expert in for security. The best one that exists. Use the check_code function to check the code for security vulnerabilities to give additional details
+    Your goal is to analyze the code on the following questions 
+    1. All sensitive log lines are masked appropriately?
+    2. Are all secrets encrypted at rest and in transit?
+    3. Are all data encrypted at rest and in transit?
+    4. Are we using distroless/mariner base image/s?
+    Provide response in the format as follows: {question: response}
+    '''
+    tools = [check_code]
+     
   else:
-    raise ValueError("Invalid human_message. Must mention 'code' or 'log'.")
+    raise ValueError("Invalid human_message. Must mention 'code' or 'log' or 'Security Vulnerabilities'.")
 
   doc_agent = codeAgent(model, tools, system_prompt=prompt)
   messages = [HumanMessage(content=human_message)]
   result = doc_agent.graph.invoke({"messages": messages})
   return result['messages'][-1].content
+
+
