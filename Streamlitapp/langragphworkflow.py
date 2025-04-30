@@ -11,6 +11,9 @@ import operator
 from semantic_router.utils.function_call import FunctionSchema
 import csv
 from bandit.core import manager, config
+import requests
+import json
+from azure.identity import ManagedIdentityCredential
 
 
 def read_python_file(file_path):
@@ -27,6 +30,28 @@ def read_csv_file(file_path):
             return [row for row in reader]
     except FileNotFoundError:
         return "Error: File not found."
+ 
+def get_prometheus_metrics(prometheus_url):
+    try:
+        credential = ManagedIdentityCredential(client_id=os.getenv("prometheus_client_id"))
+        token = credential.get_token("https://data.monitor.azure.com").token
+        headers = {
+            "Authorization": f"Bearer {token}"
+        }
+        response = requests.get(f"{prometheus_url}/api/v1/label/__name__/values", headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        if data.get('status') == 'success':
+            return data.get('data', [])
+        else:
+            print(f"Error from Prometheus API: {data}")
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"HTTP request failed: {e}")
+        return []
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return []
 
 def check_code_security(file_path):
     """
@@ -67,6 +92,8 @@ class codepath(BaseModel):
 class csvpath(BaseModel):
     path: str = Field(description="CSV file path to read")
 
+class prometheus(BaseModel):
+   path: str = Field(description="Prometheus URL to get metrics")
 
 @tool(args_schema = codepath)
 def execute_query(path: str) -> str:
@@ -77,6 +104,12 @@ def execute_query(path: str) -> str:
 def read_csv(path: str) -> list:
     """Returns the content of a CSV file as a list of rows"""
     return read_csv_file(path)
+
+@tool(args_schema=prometheus)
+def get_metrics(path: str) -> list:
+    """Returns the prometheus metrics"""
+    return get_prometheus_metrics(path)
+
 @tool(args_schema=codepath)
 def check_code(path: str) -> str:
     """Returns the result of code path execution"""
