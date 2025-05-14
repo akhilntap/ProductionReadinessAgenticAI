@@ -73,13 +73,13 @@ def check_code_security(file_path):
     # Generate and return the report
     issues = bandit_manager.get_issue_list()
     if not issues:
-        return "No high-level vulnerabilities found. Checking for lower-level issues..."
+       return "No high-level vulnerabilities found. Checking for lower-level issues..."
 
     # If no high-level issues, check for lower-level issues
     lower_level_issues = []
     for issue in issues:
-        if issue.severity.lower() in ['low', 'medium']:
-            lower_level_issues.append(str(issue))
+       if issue.severity.lower() in ['low', 'medium']:
+          lower_level_issues.append(str(issue))
 
     if lower_level_issues:
         return "\n".join(lower_level_issues)
