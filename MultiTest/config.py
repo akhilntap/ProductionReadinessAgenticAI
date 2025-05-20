@@ -16,7 +16,7 @@ os.environ['REQUESTS_CA_BUNDLE'] = pem_path
 os.environ['SSL_CERT_FILE'] = pem_path
 
 
-llm = ChatOpenAI(model_name      = "gpt-4o-mini",
+llm = ChatOpenAI(model_name      = "gpt-4o",
                  openai_api_base = OPENAI_ENDPOINT,
                  openai_api_key  = OPENAI_API_KEY,
                  model_kwargs    = {'user': getpass.getuser() },
