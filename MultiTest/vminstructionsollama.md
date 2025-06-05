@@ -59,3 +59,15 @@ sudo apt install libnvidia-gl-570
 sudo apt install nvidia-driver-570
 
 
+Under "Security -> Identity -> User assigned" add the umi to the vm, otherwise vm won't be associated to the umi
+
+# sudo docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+
+#tomake streamlit work -ssh tunneling
+cd prrenv/
+source bin/activate
+streamlit run prr/streamlittest.py --server.port 8501 --server.address 0.0.0.0
+in new window, run
+ssh -i "C:\Users\b-athirumuru.AME\Work Folders\Downloads\vmagenticworkflow-gpu-selfhost-ollama_key.pem" -L 8501:localhost:8501 azureuser@52.160.85.77
+open in browser
+http://localhost:8501
