@@ -91,9 +91,31 @@ CMD ["streamlit", "run", "streamlitapp.py"]
 To access jupyter notebook, run the following command in the terminal:
 cd streamlit_env/
 source bin/activate
-jupyter notebook --no-browser --ip=0.0.0.0 -- port=8888
+jupyter notebook --no-browser --ip=0.0.0.0 --port=8888
 Copy the token printed at the end of address
 Open new cmd prompt and run the following command:
 ssh -L 8888:localhost:8888 -i "C:\Users\b-athirumuru.AME\Work Folders\Downloads\vmagenticworkflow_key.pem" azureuser@104.209.4.91
 open broweser and go to http://localhost:8888
 Paste the token that was previously copied
+
+
+Prometheus perms
+Monitoring reader is to be given for UMI for rg since alert rules are at rg level and not monitor level
+
+
+to add system wide env vars
+ cd /etc/profile.d/
+ sudo vi myenvvars.sh
+
+
+
+gpu
+cd /home/agenticvm/prrenv
+
+Hit:1 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+Hit:5 https://download.docker.com/linux/ubuntu noble InRelease
+
+sudo add-apt-repository ppa:chris-lea/munin-plugins

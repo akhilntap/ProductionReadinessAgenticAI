@@ -14,6 +14,7 @@ from bandit.core import manager, config
 import requests
 import json
 from azure.identity import ManagedIdentityCredential
+import pandas as pd
 
 
 def read_python_file(file_path):
@@ -52,6 +53,56 @@ def get_prometheus_metrics(prometheus_url):
     except Exception as e:
         print(f"An error occurred: {e}")
         return []
+
+def get_prometheus_rule_groups(subscription_id, resource_group, api_version, client_id):
+    """
+    Fetch Prometheus rule groups from Azure Monitor and return as a DataFrame.
+
+    Args:
+        subscription_id (str): Azure subscription ID.
+        resource_group (str): Azure resource group name.
+        api_version (str): API version to use.
+        client_id (str): Client ID for Managed Identity.
+
+    Returns:
+        pd.DataFrame: DataFrame containing rule group details, or None if the request fails.
+    """
+    # Get token using Managed Identity (DefaultAzureCredential)
+    credential = ManagedIdentityCredential(client_id=client_id)
+    token = credential.get_token("https://management.azure.com/.default").token
+
+    # Construct API URL for listing all rule groups
+    url = (
+        f"https://management.azure.com/subscriptions/{subscription_id}"
+        f"/resourceGroups/{resource_group}/providers/Microsoft.AlertsManagement"
+        f"/prometheusRuleGroups?api-version={api_version}"
+    )
+
+    # Set headers with the bearer token
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+
+    # Make the GET request to Azure Monitor
+    response = requests.get(url, headers=headers)
+
+    # Check and process response
+    if response.status_code == 200:
+        data = response.json()
+        rule_groups = []
+        for rule_group in data.get("value", []):
+            rule_groups.append({
+                "Name": rule_group['name'],
+                "Location": rule_group.get('location'),
+                "Description": rule_group.get('properties', {}).get('description'),
+                "Rules": rule_group.get('properties', {}).get('rules')
+            })
+        return pd.DataFrame(rule_groups)
+    else:
+        print(f"Failed to fetch rule groups. Status Code: {response.status_code}")
+        print(response.text)
+        return None
 
 def check_code_security(file_path):
     """
@@ -95,8 +146,11 @@ class csvpath(BaseModel):
 class prometheus(BaseModel):
    path: str = Field(description="Prometheus URL to get metrics")
 
+class prometheusrules(BaseModel):
+   path: str = Field(description="Prometheus parameters to get metrics")
+
 @tool(args_schema = codepath)
-def execute_query(path: str) -> str:
+def read_python(path: str) -> str:
   """Returns the result of code path execution"""
   return read_python_file(path)
 
@@ -109,6 +163,11 @@ def read_csv(path: str) -> list:
 def get_metrics(path: str) -> list:
     """Returns the prometheus metrics"""
     return get_prometheus_metrics(path)
+
+@tool(args_schema=prometheusrules)
+def get_rules(path: str) -> list:
+    """Returns the prometheus rule groups"""
+    return get_prometheus_rule_groups()
 
 @tool(args_schema=codepath)
 def check_code(path: str) -> str:
@@ -190,21 +249,13 @@ class codeAgent:
   def exists_function_calling(self, state: AgentState):
     result = state['messages'][-1]
     return len(result.tool_calls) > 0
-  
-#  getting the required ssl certificates
-pem_path = "/opt/homebrew/etc/openssl@3/cert.pem"
-# Ensure the environment variables are set before making the API call
-os.environ['REQUESTS_CA_BUNDLE'] = pem_path
-os.environ['SSL_CERT_FILE'] = pem_path
-
-
 
 
 def analyze_observability(model: str, human_message: str):
   model = ChatOpenAI(model_name      = model,
-         openai_api_base = os.getenv('proxyllmendpoint'),
-         openai_api_key  = os.getenv('proxyllmuserkey'),
-         model_kwargs    = {'user': getpass.getuser() })
+         openai_api_base = os.getenv('aifoundrygpt40endpoint'),
+         openai_api_key  = os.getenv('aifoundrygpt40key')
+                    )
   """
   Analyzes a given file for observability requirements based on the content of the human message.
 
@@ -217,14 +268,14 @@ def analyze_observability(model: str, human_message: str):
   if "observability" in human_message.lower():
     prompt = '''You are a senior expert in reviewing code for observability. The best one that exists.
     Your goal is to analyze the code on the following questions 
-    1. Are there actionable alerts identified for the feature? Are there Runbooks for the actionable alerts? Do we have TSGs attached to the alert?
-    2. Add metrics to monitor dependencies and exception handling on components, infrastructure and features so that SRE can create alerts to reduce TTD?
+    1. Are there actionable alerts identified for the feature? Are there Runbooks for the actionable alerts? Do we have TSGs attached to the alert? Feel free to use the tools to get existing alerts, paramaters to use are subscription_id= "19998cf7-a1b7-4c69-8daf-1f026e397d66", resource_group = "anf.dc.mgmt.eastus-stage.rg", api_version="2023-03-01", client_id=os.getenv("prometheus_client_id")
+    2. Add metrics to monitor dependencies and exception handling on components, infrastructure and features so that SRE can create alerts to reduce TTD? Feel free to use the tools to get existing metrics in the prometheus. the query endpoint for monitor workspace is https://prometheusmdmeastus-stage-060d.eastus.prometheus.monitor.azure.com
     3. Are there CorrelationIDs established in logs to derive error lineage across various components?
     4. Can the feature/service support changing log levels for troubleshooting purposes?
     5. Are there critical log lines that we need to get alerted upon?
     Provide response in the format as follows: {question: response}
     '''
-    tools = [execute_query]
+    tools = [read_python, get_metrics, get_rules]
   elif "log" in human_message.lower():
     prompt = '''You are a senior expert in for observability. The best one that exists.
     Your goal is to analyze the logs on the following questions 
