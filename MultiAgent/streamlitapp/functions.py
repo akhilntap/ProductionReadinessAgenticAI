@@ -28,7 +28,7 @@ from langchain_core.messages import convert_to_messages
 
 
 # === Tool 1: GitHub PR Fetcher ===
-def fetch_pr_diff_and_metadata(repo_name, pr_number, github_token=config.GITHUB_TOKEN):
+def fetch_pr_diff_and_metadata(repo_name, pr_number, github_token):
     """
     Fetch pull request metadata and diff from GitHub.
 
@@ -57,27 +57,29 @@ def fetch_pr_diff_and_metadata(repo_name, pr_number, github_token=config.GITHUB_
 class prrepo(BaseModel):
     repo_name: str = Field(description="Repo to execute")
     pr_number: int = Field(description="PR number to execute")
+    github_token: str = Field(description="GitHub personal access token")
 @tool(args_schema = prrepo)
-def fetchprdiff(repo_name: str, pr_number: int) -> str:
+def fetchprdiff(repo_name: str, pr_number: int, github_token: str) -> str:
   """Returns the result of diff text in a PR"""
-  return fetch_pr_diff_and_metadata(repo_name, pr_number, github_token=config.GITHUB_TOKEN)
+  return fetch_pr_diff_and_metadata(repo_name, pr_number, github_token)
 
 
 # === Tool 1: GitHub File Fetcher ===
-def get_file_context(filename, ref="master"):
-    g = Github(config.GITHUB_TOKEN)
-    repo = g.get_repo(REPO_NAME)
+def get_file_context(github_token, repo_name, filename, ref="master"):
+    g = Github(github_token)
+    repo = g.get_repo(repo_name)
     try:
         contents = repo.get_contents(filename, ref=ref)
         return contents.decoded_content.decode('utf-8', errors='ignore')
     except Exception as e:
         return f"Error fetching file {filename}: {e}"
 # Tool for langrgaph
-
 class filecontent(BaseModel):
+    github_token: str = Field(description="GitHub personal access token")
+    repo_name: str = Field(description="Repo to execute")
     filename: str = Field(description="Get full contents of file")
 @tool(args_schema = filecontent)
-def file_fetch_tool(filename: str, ref: str = "master") -> str:
+def file_fetch_tool(github_token: str, repo_name: str, filename: str, ref: str = "master") -> str:
    """
     Fetch full content of a given file from the repo for additional context.
     """
@@ -86,7 +88,7 @@ def file_fetch_tool(filename: str, ref: str = "master") -> str:
 
 
 # === Tool 2: Prometheus metrics fetcher ===
-def get_prometheus_metrics(prometheus_url="https://prometheusmdmeastus-stage-060d.eastus.prometheus.monitor.azure.com"):
+def get_prometheus_metrics(prometheus_url):
     try:
         credential = ManagedIdentityCredential(client_id=config.PROMETHEUS_CLIENT_ID)
         token = credential.get_token("https://data.monitor.azure.com").token
@@ -121,7 +123,7 @@ def prometheus_metrics_fetch_tool(prometheus_url: str) -> list:
 
 
 # === Tool 3: Prometheus alerts rule groups fetcher ===
-def get_prometheus_rule_groups(subscription_id, resource_group=config.RESOURCEGROUP, client_id=config.PROMETHEUS_CLIENT_ID):
+def get_prometheus_rule_groups(subscription_id, resource_group, client_id):
     """
     Fetch Prometheus rule groups from Azure Monitor and return as a DataFrame.
 
@@ -173,12 +175,14 @@ def get_prometheus_rule_groups(subscription_id, resource_group=config.RESOURCEGR
 # Tool for LangGraph
 class prometheusmetricsurla(BaseModel):
     subscription_id: str = Field(description="subscription id")
+    resource_group: str = Field(description="resource group name")
+    client_id: str = Field(description="client id for managed identity")
 @tool(args_schema = prometheusmetricsurla)
-def prometheus_alert_rule_group_fetch_tool(subscription_id: str) -> list:
+def prometheus_alert_rule_group_fetch_tool(subscription_id: str, resource_group: str, client_id: str) -> list:
     """
     Fetch all the prometheus metrics from azure monitor workspace to get context for observability.
     """
-    return get_prometheus_rule_groups(subscription_id)
+    return get_prometheus_rule_groups(subscription_id, resource_group, client_id)
 
 # # === Tool 4: Bandit Code Security checker ===
 # def check_code_security(file_path):
@@ -317,11 +321,3 @@ def pretty_print_messages(update, last_message=False):
         for m in messages:
             pretty_print_message(m, indent=is_subgraph)
         print("\n")
-
-
-
-
-
-
-
-
